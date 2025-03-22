@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0">Importation des données</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <h5 class="alert-heading">Instructions</h5>
+                        <p>Le fichier ZIP doit contenir les fichiers CSV suivants :</p>
+                        <ul>
+                            <li><strong>t_adresse.csv</strong> - Table des adresses</li>
+                            <li><strong>t_organisme.csv</strong> - Table des organismes</li>
+                        </ul>
+                        <p class="mb-0">D'autres fichiers seront pris en charge dans des versions futures.</p>
+                    </div>
+
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                    <form action="{{ url_for('imports.upload_zip') }}" method="post" enctype="multipart/form-data" class="mt-4">
+                        <div class="file-drop-zone mb-4">
+                            <i class="fas fa-upload fa-3x mb-3 text-primary"></i>
+                            <h5>Glissez et déposez votre fichier ZIP ici</h5>
+                            <p class="text-muted">ou</p>
+                            <div class="position-relative">
+                                <input type="file" class="form-control" id="file" name="file" accept=".zip" required>
+                                <div class="mt-2 text-center">
+                                    <span class="file-name text-muted">Aucun fichier sélectionné</span>
+                                </div>
+                            </div>
+                            <div class="form-text text-muted mt-2">Format accepté : .zip</div>
+                        </div>
+                        
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg btn-import-animate">
+                                <i class="fas fa-file-import me-2"></i>Importer le fichier
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Exemple de fichier à importer -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Exemple de fichier</h5>
+                </div>
+                <div class="card-body">
+                    <p>Format de fichier attendu : <code>30frq1_SRO-BPI-11363934_REC_TR-DI-RA_V300_20250304-102326_S09.zip</code></p>
+                    <p>Ce fichier ZIP doit contenir les tables CSV de la base de données.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
