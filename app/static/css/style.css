@@ -1,0 +1,132 @@
+/* Styles généraux */
+body {
+    background-color: #f5f5f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* En-tête et navigation */
+.navbar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+/* Cartes */
+.card {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    border-bottom: none;
+    font-weight: 600;
+}
+
+/* Boutons */
+.btn-primary {
+    background-color: #2874A6;
+    border-color: #2874A6;
+    font-weight: 500;
+    padding: 10px 20px;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: #1A5276;
+    border-color: #1A5276;
+    transform: scale(1.03);
+}
+
+/* Formulaires */
+.form-control {
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.form-control:focus {
+    border-color: #2874A6;
+    box-shadow: 0 0 0 0.25rem rgba(40, 116, 166, 0.25);
+}
+
+/* Alertes */
+.alert {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Footer */
+footer {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation pour le bouton d'importation */
+.btn-import-animate {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-import-animate:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.btn-import-animate:hover:after {
+    left: 100%;
+}
+
+/* Zone de drop pour le fichier */
+.file-drop-zone {
+    border: 2px dashed #2874A6;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    background-color: rgba(40, 116, 166, 0.05);
+    transition: all 0.3s;
+}
+
+.file-drop-zone:hover {
+    background-color: rgba(40, 116, 166, 0.1);
+    border-color: #1A5276;
+}
+
+.file-drop-zone.highlight {
+    background-color: rgba(40, 116, 166, 0.15);
+    border-color: #1A5276;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card {
+        margin-bottom: 20px;
+    }
+}
+
+/* Animation de fade-out pour les alertes */
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
